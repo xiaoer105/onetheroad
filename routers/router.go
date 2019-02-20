@@ -20,6 +20,7 @@ func AppRouter() http.Handler {
 	router.Static("/static", "static")
 	// 注册函数
 	router.Std("/", (&controllers.MainController{}).Index)
+	router.Std("/index", (&controllers.MainController{}).Index)
 
 	return router
 }
