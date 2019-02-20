@@ -21,6 +21,7 @@ func AppRouter() http.Handler {
 	// 注册函数
 	router.Std("/", (&controllers.MainController{}).Index)
 	router.Std("/index", (&controllers.MainController{}).Index)
+	router.Std("/login", (&controllers.MainController{}).Login)
 
 	return router
 }

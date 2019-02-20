@@ -14,3 +14,10 @@ func (this *MainController) Index(c *gin.Context){
 
 	})
 }
+
+
+func (this *MainController) Login(c *gin.Context){
+	c.HTML(http.StatusOK,"view/main/login.html",map[string]interface{}{
+
+	})
+}
