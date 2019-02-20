@@ -3,12 +3,249 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="icon" href="picture.ico" type="image/x-icon"/>
     <title>在路上-记录你的点滴</title>
+    <link rel="icon" href="picture.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/index.css"/>
+
 </head>
 <body>
-    Hello OneTheRoad
+<div id = "all" class = "ontherode">
+    <div class="ontherode-left">
+        <div class = "ontherode-centent" id = "ontherode-centent"></div>
+        <!-- 导航头部 -->
+        <div class = "top-box">
+            <div class = "logo-box pull-left">
+                <a href = "/index">On The Road</a>
+            </div>
+            <div class = "menu-box pull-right">
+                <a class = "aside-menu" id = "aside-menu" href = "javascript:;">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+        </div>
+        <!-- END top-box -->
+
+        <div class = "container ontherode-info">
+            <p>我们一生中记录生活的方式有很多种，用一张照片记录自己的生活，这是最合适不过的了。</p>
+            <a href = "findlogins.action">开始记录</a>
+        </div>
+
+        <!-- 首页底部 -->
+        <div class = "footer navbar-fixed-bottom">
+            <div class="footer-left pull-left">
+                <p class = "footer-name">On Name</p>
+                <p class = "footer-photos-name">夕阳下的枫树</p>
+            </div>
+            <div class = "footer-right pull-right">
+                <span class = "photos-info">
+                    <img src = "/static/images/2.png" width = "29" height="29" />
+                </span>
+            </div>
+        </div>
+
+        <!-- 点击帮助显示信息 -->
+        <div class = "content">
+            <div class = "content-header">
+                <p class = "content-exit pull-right">
+                    <img class = "" src = "/static/images/1.png" width = "20" height="20" />
+                </p>
+                <div class = "content-info container_fluid">
+                    <div class = "row" style="margin-bottom: 100px ;">
+                        <div class = "col-sm-2"></div>
+                        <div class = "col-sm-3">
+                            <h3>On The Road</h3>
+                            <div class = "content-hr"></div>
+                            <p>
+                                走过春夏秋冬的景，路过形形色色的人。那些转瞬即逝的时光，那些动人心扉的美好，那些可遇不可求的新奇…… 都值得你用心感受它，用手中的手机留住它。
+                            </p>
+                        </div>
+                        <div class = "col-sm-3">
+                            <h3>参与规则</h3>
+                            <div class = "content-hr"></div>
+                            <p>1、所有作品必须由手机拍摄完成；</p>
+                            <p>2、手机可以使用附加镜头，可以运用滤镜等各种App进行后期制作，并需带有EXIF信息，以验证其真实性。在某些情况下，我们需要验证作品是否为手机拍摄，如无法验证其真实性，我们将取消资格；</p>
+                            <p>3、投稿作品比例尺寸建议 4：3为佳，上传文件类型 jpg、jpeg、png 均可，每位用户每天最多上传3张照片，每张照片大小不超过10M；</p>
+                            <p>4、作品应健康，遵守国家相应法律法规，尊重世界各地区宗教信仰及文化。</p>
+                            <p>5、主题共分为人像、建筑、风光、城市、旅行、微距等 16 大项。</p>
+                            <p>6、入选后将其优秀照片放置首页。</p>
+                        </div>
+                        <div class = "col-sm-3">
+                            <h3>如何参与</h3>
+                            <div class = "content-hr"></div>
+                            <p>1、上传照片前请先注册或登录On The Road账户；</p>
+                            <p>2、登录成功后，点击“我要参加”上传照片；</p>
+                            <p>3、填写个人信息及照片信息，上传照片，点击提交即可；</p>
+                            <p>4、你可以在“我的上传”页面中查看你上传过的照片。</p>
+
+                        </div>
+                    </div>
+                    <a class = "navbar-fixed-bottom centent_participate" href = "findlogins.action">
+                        我要参加
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- END content -->
+    </div>
+
+    <div class = "ontherode-right">
+        <!-- 侧边栏 -->
+        <div id = "aside" class = "aside">
+            <!-- 侧边栏信息 -->
+            <div class = "aside-navbar  pull-right">
+                <p class = "aside-exit pull-right">
+                    <img class = "" src = "/static/images/1.png" width = "20" height="20" />
+                </p>
+                <ul>
+                    <li>
+                        <a href = "#">今日照片</a>
+                    </li>
+                    <li>
+                        <a href = "#">网友上传</a>
+                    </li>
+                    <li>
+                        <a id = "phtots" href = "javascript:;">照片介绍</a>
+                    </li>
+                    <li>
+                        <a href = "#">我的上传</a>
+                    </li>
+                </ul>
+                <p>
+                    <a class = "photos_participate" href = "findlogins.action" style = "width:80%">
+                        我要上传
+                    </a>
+                </p>
+            </div>
+            <!-- END aside-navbar -->
+
+            <div id = "aside-photos" class = "aside-photos">
+                <p class = "aside-exit pull-right">
+                    <img class = "" src = "/static/images/1.png" width = "20" height="20" />
+                </p>
+                <div class = "aside-photos-centen">
+                    <div>
+                        <h3>On The Road</h3>
+                        <div class = "aside-photos-hr"></div>
+                        <p>
+                            走过春夏秋冬的景，路过形形色色的人。那些转瞬即逝的时光，那些动人心扉的美好，那些可遇不可求的新奇…… 都值得你用心感受它，用手中的手机留住它。
+                        </p>
+                    </div>
+
+                    <div style = "margin-top:30px">
+                        <h3>参与规则</h3>
+                        <div class = "aside-photos-hr"></div>
+                        <p>1、所有作品必须由手机拍摄完成；</p>
+                        <p>2、手机可以使用附加镜头，可以运用滤镜等各种App进行后期制作，并需带有EXIF信息，以验证其真实性。在某些情况下，我们需要验证作品是否为手机拍摄，如无法验证其真实性，我们将取消资格；</p>
+                        <p>3、投稿作品比例尺寸建议 4：3为佳，上传文件类型 jpg、jpeg、png 均可，每位用户每天最多上传3张照片，每张照片大小不超过10M；</p>
+                        <p>4、作品应健康，遵守国家相应法律法规，尊重世界各地区宗教信仰及文化。</p>
+                        <p>5、主题共分为人像、建筑、风光、城市、旅行、微距等 16 大项。</p>
+                        <p>6、入选后将其优秀照片放置首页。</p>
+                    </div>
+
+                    <div style = "margin-top:50px">
+                        <h3>如何参与</h3>
+                        <div class = "aside-photos-hr"></div>
+                        <p>1、上传照片前请先注册或登录On The Road账户；</p>
+                        <p>2、登录成功后，点击“我要参加”上传照片；</p>
+                        <p>3、填写个人信息及照片信息，上传照片，点击提交即可；</p>
+                        <p>4、你可以在“我的上传”页面中查看你上传过的照片。</p>
+                    </div>
+                    <p style = "margin-top:40px ;margin-bottom:40px ;">
+                        备注：关于On The Road活动的最终解释权归younghot所有。
+                    </p>
+                    <p>
+                        <a class = "photos_participate" href = "findlogins.action">
+                            我要参加
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <!-- END aside-photos -->
+        </div>
+    </div>
+    <!-- END all -->
+
+    <div class = "alls"></div>
+</div>
+<script src="/static/js/dropdown.js"></script>
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $("#aside-menu").click(function(){
+            var asideWidth = $(".aside").width() ;
+            $(".ontherode-left").css({"right":asideWidth+"px"});
+            $(".alls").css({"display":"block"}) ;
+            $(".aside-navbar").css({"left":"-"+asideWidth+"px"}) ;
+            $("#aside-menu").css({"display":"none"}) ;
+        });
+
+        $(".alls").click(function(){
+            var asideWidth = $(".aside").width() ;
+            $(".ontherode-left").css({"right":"0px"}) ;
+            $(".alls").css({"display":"none"}) ;
+            $(".aside-navbar").css({"left":"0px"}) ;
+            $("#aside-menu").css({"display":"block"}) ;
+            $(".aside-photos").css({"left":asideWidth+"px"}) ;
+        });
+
+        /*点击照片详情*/
+        $("#phtots").click(function(){
+            var asideWidth = $(".aside").width() ;
+            $(".aside-photos").css({"left":"-"+asideWidth+"px"}) ;
+        }) ;
+
+        /* 点击帮助按钮 */
+        $(".photos-info").click(function(){
+            $(".content").css({"opacity":"1","z-index":"9999"}) ;
+        }) ;
+
+        /* 点击关闭帮助内容 */
+        $(".content-exit").click(function(){
+            $(".content").css({"opacity":"0","z-index":"0"}) ;
+        }) ;
+
+        /* 点击菜单关闭 */
+        $(".aside-exit").click(function(){
+            var asideWidth = $(".aside").width() ;
+            $(".ontherode-left").css({"right":"0px"}) ;
+            $(".aside-navbar").css({"left":"0px"}) ;
+            $("#list-container").css({"left":"0px"}) ;
+            $(".alls").css({"display":"none"}) ;
+            $(".aside-photos").css({"left":asideWidth + "px"}) ;
+            $("#aside-menu").css({"display":"block"}) ;
+            $("body").css({"overflow-y":"auto"}) ;
+        }) ;
+    });
+</script>
+<script type = "text/javascript">
+    var flag = false ;
+    window.onload = function(){
+        $(".ontherode-info").css({"opacity":"0","z-index":"888"}) ;
+        document.getElementsByClassName("ontherode-info")[0].style.opacity = "1" ;
+        document.getElementsByClassName("ontherode-info")[0].style.zindex = "9999" ;
+        setTimeout("ontherode_scale_kais();",10) ;
+        setTimeout("ontherode_scale_ent();",16000) ;
+    }
+    function ontherode_scale_kais(){
+        var ontherode_centent = document.getElementById("ontherode-centent") ;
+        ontherode_centent.style.transform = "scale(1.8)" ;
+    }
+
+    function ontherode_scale_ent(){
+        var ontherode_centent = document.getElementById("ontherode-centent") ;
+        ontherode_centent.style.transform = "scale(1)" ;
+        ontherode_centent.style.transition= "all 30s" ;
+    }
+</script>
 </body>
 </html>
+
 {{end}}
