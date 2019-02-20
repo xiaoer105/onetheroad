@@ -1,0 +1,348 @@
+@CHARSET "UTF-8";
+*{
+				margin:0px ;
+				padding:0px ;
+				font-family:"Arial" ;
+			}
+			a{
+				color:#FFF ;
+			}
+			a:hover{
+				color:#FFF ;
+				text-decoration: none;
+			}
+			a:focus {
+  				color:#FFF;
+  				text-decoration: none;
+  			}
+  			.alls{
+  				z-index:0 ;
+  				width:100% ;
+  				height:100% ;
+  				z-index:999 ;
+  				display:none ;
+  				position:fixed ;
+  				transition:all .4s ;
+  				background-color:rgba(0,0,0,.6) ;
+  			}
+			.uploadphoto{
+				width:100% ;
+				height:100% ;
+				/*right:440px ;*/
+				overflow:hidden ;
+				position:absolute ;
+				background-color:#F1F1F1 ;
+			}
+			.uploadphoto-left{
+				float:left ;
+				width:100% ;
+				height:auto ;
+				position:absolute ;
+				transition:all .4s ;
+				/*background-color:blue ;*/
+			}
+			.top-box{
+  				width:100% ;
+  				z-index:99 ;
+  				height:320px ;
+  				font-size:20px ;
+  				padding-top:40px ;
+  				position:relative ;
+  				background:#CCC url(../images/body-bg1.jpg) no-repeat center top ;
+  			}
+  			.logo-box{
+  				margin-left:40px ;
+  			}
+  			.aside-menu{
+  				width:50px ;
+  				height:50px ;
+  				display:block ;
+  				margin-right:40px ;
+  				padding-top:18px ;
+  				border-radius:100px ;
+  				background-color:rgba(0,0,0,0.6) ;
+  				-webkit-transition: -webkit-all.3s ;
+  				transition:all .3s;
+  			}
+  			.aside-menu:hover{
+  				-webkit-transform:rotate(90deg);
+  				transform:rotate(90deg);
+  			}
+  			.aside-menu span{
+  				width:22px ;
+  				height:3px ;
+  				display:block ;
+  				margin-top:0px ;
+  				background:#FFF ;
+  				margin-left:auto ;
+  				margin-right:auto ;
+  				margin-bottom:3px ;
+  			}
+  			.registerWin-container{
+				top:320px ;
+				width:100% ;
+				height:auto ;
+				z-index:888 ;
+				position:absolute ;
+				transition:all .4s ;
+				background-color:#F1F1F1 ;
+			}
+			.registerWin-container-l{
+				width:550px ;
+				height:auto ;
+				margin-left:auto ;
+				padding-top:60px ;
+				margin-top:-155px ;
+				margin-right:auto ;
+				position:relative ;
+				border-radius:3px ;
+				padding-bottom:80px ;
+				margin-bottom:120px ;
+	  			background-color:#FFF ;
+			}
+			.registerWin-head h3{
+				display:block ;
+				font-size:30px ;
+				text-align:center ;
+				margin-bottom:40px 
+			}
+			.registerWin-inputbox{
+				width:64% ;
+				height:50px ;
+				margin-left:auto ;
+				margin-right:auto ;
+				margin-bottom:20px ;
+				border-bottom:solid 1px #E5E5E5 ;
+			}
+			.registerWin-inputbox input{
+				width:100% ;
+				border:none ;
+				outline:none;
+				font-size:16px ;
+				padding-left:10px ;
+			}
+			.registerWin{
+				width:64% ;
+				height:50px ;
+				outline:none;
+				margin-top:60px ;
+				margin-left:auto ;
+				margin-right:auto ;
+			}
+  			
+
+			.uploadphoto-right{
+				left:440px ;
+				width:440px ;
+				height:100% ;
+				float:right ;
+				position:relative ;
+				background-color:red ;
+			}
+			.aside{
+  				float:left ;
+  				z-index:999 ;
+  				width:440px ;
+  				height:100% ;
+ 				position:relfative ;
+  			}
+  			.aside a{
+  				font-size:16px ;
+  				font-weight:400 ;
+  				font-family:"Microsoft Yahei" ;
+  			}
+  			.aside-exit{
+  				margin:60px 20px 0px 0px ;
+  			}
+  			.aside-navbar{
+  				width:440px ;
+  				height:100% ;
+  				z-index:999 ;
+  				position:absolute ;
+  				transition:all .4s !important ;
+  				background-color:#000 ;
+  			}
+  			.aside-navbar ul{
+  				margin-top:45% ;
+  				list-style:none ;
+  				margin-bottom:60px ;
+  			}
+  			
+  			.aside-navbar ul a{
+  				color:#CCC ;
+  				display:block ;
+  				padding-top:20px ;
+  				padding-left:10% ;
+  				padding-bottom:20px ;
+  			}
+  			.aside-navbar ul a:hover{
+  				color:#FFF ;
+  				background-color:#1F1F1F ;
+  			}
+  			.aside-photos{
+  				color:#FFF ;
+  				float:right ;
+  				width:440px ;
+  				height:100% ;
+  				z-index:9999 ;
+  				overflow-y: auto ;
+  				position:relative ;
+  				transition:all .4s !important ;
+  				background-color:#000 ;
+  			}
+  			.aside-photos-centen{
+  				width:80% ;
+  				height:auto ;
+  				margin:36% auto 0px ;
+  			}
+  			.aside-photos-centen h3{
+  				font-size:18px ;
+  			}
+  			.aside-photos-centen p{
+  				color:#7F7F7F ;
+  				font-size:12px ;
+  			}
+  			.aside-photos-hr{
+  				width:100% ;
+  				height:1px ;
+  				margin-top:36px ;
+  				margin-bottom:18px ;
+  				background-color:#7F7F7F ;
+  			}
+  			.photos_participate{
+  				color:#000 ;
+  				width:100% ;
+  				height:50px ;
+  				display:block ;
+  				margin-left:auto ;
+  				line-height:50px ;
+  				text-align:center ;
+  				margin-right:auto ;
+  				background-color:#FFF ;
+  			}
+  			.photos_participate:hover{
+  				color:blue !important ;
+  			}
+  			.photos_participate:focus {
+  				color:#000;
+  				text-decoration: none;
+  			}
+  			.myfile{
+  				width:50px ;
+  				height:50px ;
+  				border:none ;
+  			}
+  			@media screen and (max-width:650px) {
+  				.uploadphoto{
+  					background-color:#FFF ;
+  					height:100% ;
+  				}
+  				.top-box{
+	  				height:160px ;
+	  			}
+	  			.logo-box{
+  					margin-left:15px ;
+  				}
+	  			.aside-menu{
+	  				width:40px ;
+	  				height:40px ;
+	  				padding-top:14px ;
+	  				margin-top:-10px ;
+	  				margin-right:15px ;
+	  			}
+	  			.aside-menu span{
+	  				width:19px ;
+	  				height:2px ;
+	  				margin-top:0px ;
+	  				background:#FFF ;
+	  				margin-left:auto ;
+	  				margin-right:auto ;
+	  				margin-bottom:3px ;
+	  			}
+
+				.registerWin-container{
+					top:315px ;
+					margin-bottom:0px ;
+					padding-bottom:0px ;
+				}
+				.registerWin-container-l{
+					width:100% ;
+					padding-top:30px ;
+					padding-bottom:40px ;
+					margin-bottom:0px ;
+				}
+				.registerWin-inputbox{
+					width:74% ;
+					height:50px ;
+					margin-left:auto ;
+					margin-right:auto ;
+					margin-bottom:20px ;
+					border-bottom:solid 1px #E5E5E5 ;
+				}
+				.registerWin-inputbox input{
+					width:100% ;
+					border:none ;
+					font-size:16px ;
+					padding-left:10px ;
+				}
+				.registerWin{
+					width:74% ;
+					height:50px ;
+					margin-left:auto ;
+					margin-right:auto ;
+				}
+				
+				.aside{
+	  				width:100% ;
+	  			}
+	  			.aside-exit{
+					display:block ; 
+					margin:20px 20px 0px 0px ;
+  				}
+  				.uploadphoto-right{
+  					left:100% ;
+	  				width:100% ;
+	  				height:100% ;
+	  				z-index:99999 ;
+	  				position:relative ;
+		  		}
+		  		.aside-exit{
+					display:block ; 
+					margin:20px 20px 0px 0px ;
+  				}
+  				.aside-navbar ul{
+  					margin-top:15% ;
+  				}
+				.aside{
+	  				float:left ;
+	  				z-index:99999 ;
+	  				width:100% ;
+	  				height:100% ;
+	 				position:relative ;
+	  			}
+				.aside-navbar{
+	  				width:100% ;
+	  				height:100% ;
+	  				z-index:999 ;
+	  				position:absolute ;
+	  				transition:all .4s !important ;
+	  				background-color:#000 ;
+	  			}
+	  			.aside-navbar ul a{
+	  				padding-left:0px ;
+	  			}
+	  			.aside-photos{
+	  				width:100% ;
+	  				height:100% ;
+	  				z-index:9999 ;
+	  				overflow-y: auto ;
+	  			}
+	  			.aside-photos-centen{
+	  				width:80% ;
+	  				height:auto ;
+	  				margin:36% auto 0px ;
+	  			}
+	  			.aside-navbar ul a{
+	  				text-align:center ;
+	  			}
+			}
