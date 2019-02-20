@@ -1,12 +1,12 @@
 package routers
 
 import (
-	"net/http"
-	"github.com/gin-gonic/gin"
 	"app/org/web/OneTheRoad/controllers"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
-func AppTLSRouter() http.Handler{
+func AppTLSRouter() http.Handler {
 	return AppRouter()
 }
 
@@ -22,6 +22,7 @@ func AppRouter() http.Handler {
 	router.Std("/", (&controllers.MainController{}).Index)
 	router.Std("/index", (&controllers.MainController{}).Index)
 	router.Std("/login", (&controllers.MainController{}).Login)
+	router.Std("/register", (&controllers.MainController{}).Register)
 
 	return router
 }
