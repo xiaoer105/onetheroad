@@ -1,16 +1,17 @@
 package main
 
 import (
-	"net/http"
 	"app/org/web/OneTheRoad/routers"
-	"time"
+	_ "database/sql"
+	_ "github.com/go-sql-driver/mysql"
 	"log"
+	"net/http"
+	"time"
 )
 
 func main() {
-
 	server := &http.Server{
-		Addr:         ":8080",        
+		Addr:         ":80",
 		Handler:      routers.AppTLSRouter(),
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,

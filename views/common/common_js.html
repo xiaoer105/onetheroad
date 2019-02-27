@@ -1,0 +1,80 @@
+{{define "views/common/common_js.html"}}
+<script src="/static/js/jquery-3.2.1.min.js"></script>
+<script src="/static/js/dropdown.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="/static/js/vue.min.js"></script>
+<script type="text/javascript">
+
+    function apiRequest(url, reqJson, method) {
+
+        console.log("apiRequest[url]:",url);
+        console.log("apiRequest[reqJson]:",reqJson);
+        console.log("apiRequest[method]:",method);
+
+        return new Promise(function (resole, reject) {
+
+            $.ajax({
+                url: url,
+                data: reqJson,
+                type: method,
+                dataType:'json',
+                success: res => {
+                    console.log("apiRequest[success]:",res);
+                    if (res['result'] == "ok"){
+                        resole(res)
+                    }else{
+                        reject(res)
+                    }
+                }, fail: error => {
+                    console.log("apiRequest[error]:",error);
+                    reject(error)
+                }
+            })
+
+        })
+    }
+
+    $(document).ready(function () {
+
+        $("#aside-menu").click(function () {
+            var asideWidth = $(".aside").width();
+            $(".uploadphoto-left").css({"right": asideWidth + "px"});
+            $(".alls").css({"display": "block"});
+            $(".aside-navbar").css({"left": "-" + (asideWidth) + "px"});
+            $("#aside-menu").css({"display": "none"});
+            $(".loginWin-container").css({"left": "-" + (asideWidth) + "px"});
+            $("body").css({"overflow-y": "hidden"});
+        });
+
+        $(".alls").click(function () {
+            var asideWidth = $(".aside").width();
+            $(".uploadphoto-left").css({"right": "0px"});
+            $(".alls").css({"display": "none"});
+            $(".aside-navbar").css({"left": "0px"});
+            $("#aside-menu").css({"display": "block"});
+            $(".aside-photos").css({"left": asideWidth + "px"});
+            $(".loginWin-container").css({"left": "0px"});
+            $("body").css({"overflow-y": "auto"});
+        });
+
+        /*点击照片详情*/
+        $("#phtots").click(function () {
+            var asideWidth = $(".aside").width();
+            $(".aside-photos").css({"left": "-" + asideWidth + "px"});
+        });
+
+        $(".aside-exit").click(function () {
+            var asideWidth = $(".aside").width();
+            $(".uploadphoto-left").css({"right": "0px"});
+            $(".aside-navbar").css({"left": "0px"});
+            $(".alls").css({"display": "none"});
+            $(".aside-photos").css({"left": asideWidth + "px"});
+            $("#aside-menu").css({"display": "block"});
+            $(".loginWin-container").css({"left": "0px"});
+            $("body").css({"overflow-y": "auto"});
+        });
+
+    });
+</script>
+{{end}}
