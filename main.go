@@ -11,7 +11,7 @@ import (
 
 func main() {
 	server := &http.Server{
-		Addr:         ":80",
+		Addr:         ":8080",
 		Handler:      routers.AppTLSRouter(),
 		ReadTimeout:  5 * time.Second,
 		WriteTimeout: 10 * time.Second,
