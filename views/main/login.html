@@ -1,91 +1,136 @@
 {{define "view/main/login.html"}}
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>用户登录|On The Road</title>
-    <link rel="icon" href="picture.ico" type="image/x-icon"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>用户登录|On The Road</title>
+        <link rel="icon" href="picture.ico" type="image/x-icon"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/login.css">
-</head>
-<body>
-<div class="alls"></div>
-<div class="uploadphoto">
-    <div class="uploadphoto-left">
-        <!-- 导航头部 -->
-        <div class="top-box">
-            <div class="logo-box pull-left">
-                <a href="#">On The Road</a>
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/css/login.css">
+
+        <style type="text/css">
+            .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="alls"></div>
+    <div class="uploadphoto">
+        <div class="uploadphoto-left">
+            <!-- 导航头部 -->
+            <div class="top-box">
+                <div class="logo-box pull-left">
+                    <a href="#">On The Road</a>
+                </div>
+                <div class="menu-box pull-right">
+                    <a class="aside-menu" id="aside-menu" href="javascript:;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
             </div>
-            <div class="menu-box pull-right">
-                <a class="aside-menu" id="aside-menu" href="javascript:;">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-            </div>
+            <!-- END top-box -->
         </div>
-        <!-- END top-box -->
+        <!-- END uploadphoto-left -->
+
+        {{template "views/common/aside.html"}}
     </div>
-    <!-- END uploadphoto-left -->
+    <!-- END uploadphoto -->
 
-{{template "views/common/aside.html"}}
-</div>
-<!-- END uploadphoto -->
+    <style type="text/css">
 
-<style type="text/css">
-
-</style>
-<div class="loginWin-container">
-    <div class="loginWin-container-l">
-        <div class="loginWin-head">
-            <h3>用户登录</h3>
+    </style>
+    <div class="loginWin-container">
+        <div class="loginWin-container-l">
+            <div class="loginWin-head">
+                <h3>用户登录</h3>
+            </div>
+            <form id="UserLoginFrom" action="" method="post" onsubmit="return false">
+                <div class="loginWin-inputbox">
+                    <input id="Username" type="text" placeholder="请输入用户名或邮箱" v-model="email"/>
+                </div>
+                <div class="loginWin-inputbox">
+                    <input id="Password" type="password" placeholder="请输入密码" v-model="password"/>
+                </div>
+                <div class="rememberme">
+                    <a href="javascript:;">忘记密码？</a>
+                    <a class="pull-right" href="register.jsp">没有账号？点击注册</a>
+                </div>
+                <button class="loginWin btn btn-danger btn-lg btn-block" id="LoginBtn" type="button"
+                        v-on:click="userLogin">
+                    登录
+                </button>
+                <p class="login_error">提示：<span v-html="login_error_info"></span></p>
+            </form>
         </div>
-        <form id="UserLoginFrom" action="" method="post" onsubmit="return false">
-            <div class="loginWin-inputbox">
-                <input id="Username" type="text" placeholder="请输入用户名或邮箱" v-model="username"/>
-            </div>
-            <div class="loginWin-inputbox">
-                <input id="Password" type="password" placeholder="请输入密码" v-model="password"/>
-            </div>
-            <div class="rememberme">
-                <a href="javascript:;">忘记密码？</a>
-                <a class="pull-right" href="register.jsp">没有账号？点击注册</a>
-            </div>
-            <button class="loginWin btn btn-danger btn-lg btn-block" id="LoginBtn" type="button" v-on:click="userLogin">
-                登录
-            </button>
-        </form>
     </div>
-</div>
-{{template "views/common/common_js.html"}}
-<script type="text/javascript">
-    var UserLoginFrom = new Vue({
-        el: '#UserLoginFrom',
-        data: {
-            username: "",
-            password: ""
-        },
-        methods: {
-            userLogin: function(event) {
-                var reqJson = {
-                    "Username": this.username,
-                    "Password": this.password
-                }
-                apiRequest('/login', reqJson, "POST").then(res => {
-                    if (res['result'] == "ok"){
-                        window.location.href="/index"
+    {{template "views/common/common_js.html"}}
+    <script type="text/javascript">
+        new Vue({
+            el: '#UserLoginFrom',
+            data: {
+                email: "",
+                password: "",
+                login_error_info: ""
+            },
+            methods: {
+                userLogin: function (event) {
+                    var _this = this;
+                    var reqJson = {
+                        "Email": _this.email,
+                        "Password": _this.password
                     }
-                }).catch(err => {
-                })
+                    apiRequest('/login', reqJson, "POST").then(res => {
+                        if (res['result'] == "ok") {
+
+                            $(".login_error").show();
+                            jumpLocationHrefPage("/index", 2)
+                            _this.login_error_info = "登陆成功,2秒后自动跳转到首页"
+                        }
+                    }).catch(err => {
+                        $(".login_error").show();
+                        _this.login_error_info = err.desc
+                    })
+
+
+                }
+            }
+        })
+
+        /**
+         * 几秒后跳转到某个页面
+         * */
+        function jumpLocationHrefPage(jumpUrl, time = 0) {
+            if (vaildataNumber(time)) {
+                var timeInt = parseInt(time);
+
+                timeInt *= 1000
+
+                setTimeout(function () {
+                    window.location.href = jumpUrl
+                }, timeInt)
             }
         }
-    })
 
+        /**
+         * 验证字符串是否为数字
+         * @param val 验证字段
+         * @returns {boolean} true：是数字、false:不是数字
+         */
+        function vaildataNumber(val) {
+            var reg = /^[1-9]+[0-9]*]*$/;
+            if (reg.test(val)) {
+                return true
+            } else {
+                return false
+            }
+        }
 
-</script>
-</body>
-</html>
+    </script>
+    </body>
+    </html>
 {{end}}

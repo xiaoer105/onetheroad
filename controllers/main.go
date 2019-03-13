@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"database/sql"
+	"app/org/web/OnTheRoad/models"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
@@ -14,34 +14,12 @@ type MainController struct {
 	BaseController
 }
 
-var DB *sql.DB
-
-const (
-	USERNAME = "root"
-	PASSWORD = "123456"
-	NETWORK  = "tcp"
-	SERVER   = "localhost"
-	PORT     = 3306
-	DATABASE = "ontheroad"
-)
-
-func init() {
-	var err error
-	dsn := fmt.Sprintf("%s:%s@/%s", USERNAME, PASSWORD, DATABASE)
-	DB, err = sql.Open("mysql", dsn)
-	log.Printf("################实例化sql")
-	if err != nil {
-		log.Fatalf("Open mysql failed,err:%v\n", err)
-	}
-	return
-}
-
 func (this *MainController) Index(c *gin.Context) {
 	c.HTML(http.StatusOK, "view/main/index.html", map[string]interface{}{})
 }
 
 type MainLoginReq struct {
-	Username string `json:"username"`
+	Email    string `json:"email"`
 	Password string `json:"Password"`
 }
 
@@ -49,7 +27,7 @@ type MainLoginResp struct {
 	Result   string `json:"result"`
 	Id       int64  `db:"id"`
 	IdStr    string `db:"id_str"`
-	NickName string `db:"nickname"`
+	Email    string `db:"email"`
 	Password string `db:"password"`
 }
 
@@ -61,12 +39,12 @@ func (this *MainController) Login(c *gin.Context) {
 
 	var item MainLoginReq
 
-	item.Username = c.PostForm("Username")
+	item.Email = c.PostForm("Email")
 	item.Password = c.PostForm("Password")
 
 	var v MainLoginResp
 
-	err := DB.QueryRow("SELECT id,nickname FROM usr WHERE username = ? AND password = ?", item.Username, item.Password).Scan(&v.Id, &v.NickName)
+	err := models.DB.QueryRow("SELECT id,email FROM usr WHERE email = ? AND password = ?", item.Email, item.Password).Scan(&v.Id, &v.Email)
 	v.IdStr = strconv.Itoa(int(v.Id))
 
 	if err != nil {

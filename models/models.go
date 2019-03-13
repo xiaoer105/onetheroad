@@ -2,25 +2,28 @@ package models
 
 import (
 	"database/sql"
+	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"log"
 )
 
 var DB *sql.DB
 
+const (
+	USERNAME = "root"
+	PASSWORD = "li19980105li"
+	NETWORK  = "tcp"
+	SERVER   = "localhost"
+	PORT     = 3306
+	DATABASE = "ontheroad"
+)
+
 func init() {
-	db, err := sql.Open("mysql", "root:123456@onetheroad")
-
-	if err == nil {
-		DB = db
+	var err error
+	dsn := fmt.Sprintf("%s:%s@/%s", USERNAME, PASSWORD, DATABASE)
+	DB, err = sql.Open("mysql", dsn)
+	if err != nil {
+		log.Fatalf("Open mysql failed,err:%v\n", err)
 	}
-}
-
-func UserLogin(username, password string) string {
-	row, _ := DB.Query("SELECT nickname FROM usr WHERE username=? AND password=?", username, password)
-	var nickName string
-
-	row.Scan(&nickName)
-	log.Println(nickName)
-	return nickName
-
+	return
 }

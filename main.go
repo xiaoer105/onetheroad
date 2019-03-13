@@ -1,7 +1,7 @@
 package main
 
 import (
-	"app/org/web/OneTheRoad/routers"
+	"app/org/web/OnTheRoad/routers"
 	_ "database/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"log"

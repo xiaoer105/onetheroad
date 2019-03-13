@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"app/org/web/OneTheRoad/controllers"
+	"app/org/web/OnTheRoad/controllers"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
