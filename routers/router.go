@@ -2,6 +2,8 @@ package routers
 
 import (
 	"app/org/web/OnTheRoad/controllers"
+	"log"
+
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -18,11 +20,37 @@ func AppRouter() http.Handler {
 	router.LoadHTMLGlob("views/**/**")
 
 	router.Static("/static", "static")
+
 	// 注册函数
-	router.Std("/", (&controllers.MainController{}).Index)
-	router.Std("/index", (&controllers.MainController{}).Index)
-	router.Std("/login", (&controllers.MainController{}).Login)
-	router.Std("/register", (&controllers.MainController{}).Register)
+
+	apiRouter := router.Group("/")
+	apiRouter.Use(VerifyLoginToken())
+	{
+		apiRouter.Std("/", (&controllers.MainController{}).Index)
+		apiRouter.Std("/index", (&controllers.MainController{}).Index)
+		apiRouter.Std("/login", (&controllers.MainController{}).Login)
+		apiRouter.Std("/register", (&controllers.MainController{}).Register)
+	}
 
 	return router
+}
+
+//
+// 验证用户登陆token
+func VerifyLoginToken() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var pathUrl = c.Request.URL.Path
+		log.Println("###############url", pathUrl)
+		tokenId, err := c.Cookie("TokenId")
+		log.Println("###############tokenId", tokenId)
+
+		if tokenId, err = c.Cookie("TokenId"); tokenId == "" || err != nil {
+			if pathUrl != "/login" { // 不是登陆页需要显示登陆页，进行登陆
+				c.HTML(http.StatusOK, "view/main/login.html", map[string]interface{}{})
+				c.Abort()
+			}
+		}
+
+		c.Next()
+	}
 }
